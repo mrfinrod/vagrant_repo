@@ -1,11 +1,11 @@
 puts 'Введите первую сторону треугольника'
-first_side = gets.chomp.to_i
+first_side = gets.chomp.to_f
 
 puts 'Введите вторую сторону треугольнка'
-second_side = gets.chomp.to_i
+second_side = gets.chomp.to_f
 
 puts 'Введите третью сторону треугольнка'
-third_side = gets.chomp.to_i
+third_side = gets.chomp.to_f
 
 
 # вычисление по теореме Пифагора
