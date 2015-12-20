@@ -1,18 +1,5 @@
 
-months_list = {
-    1 => {'name' => 'January', 'days' => 31},
-    2 => {'name' => 'February', 'days' => 28},
-    3 => {'name' => 'March', 'days' => 31},
-    4 => {'name' => 'April', 'days' => 30},
-    5 => {'name' => 'May', 'days' => 31},
-    6 => {'name' => 'June', 'days' => 30},
-    7 => {'name' => 'July', 'days' => 31},
-    8 => {'name' => 'August', 'days' => 31},
-    9 => {'name' => 'September', 'days' => 30},
-    10 => {'name' => 'October', 'days' => 31},
-    11 => {'name' => 'November', 'days' => 30},
-    12 => {'name' => 'December', 'days' => 31}
-}
+months_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 =begin
 Год високосный если:
@@ -21,16 +8,7 @@ months_list = {
 =end
 
 def is_leap_year(year)
-  if year % 4 == 0
-    if year % 100 == 0
-      if year % 400 == 0
-        return true
-      end
-      return false
-    end
-    return true
-  end
-  return false
+  (year % 400 == 0) || (year % 100 != 0 && year % 4 == 0)
 end
 
 puts 'Введите число'
@@ -38,6 +16,7 @@ day = gets.chomp.to_i
 
 puts 'Введите месяц (число)'
 month = gets.chomp.to_i
+input_month = month
 
 puts 'Введите год'
 year = gets.chomp.to_i
@@ -45,10 +24,10 @@ year = gets.chomp.to_i
 days_counter = 0
 
 while month > 1
-  if month == 2 && is_leap_year(year)
+  if month == 2 && is_leap_year(year) && input_month != 2
     days_counter += 29
   else
-    days_counter += months_list[month]['days']
+    days_counter += months_days[month - 1]
   end
   month -= 1
 end
